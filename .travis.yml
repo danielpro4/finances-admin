@@ -1,8 +1,6 @@
 language: php
 
 php:
-  - 5.5.9
-  - 5.6
   - 7.0
   - hhvm
 
@@ -17,10 +15,11 @@ env:
     - APP_DEBUG=true
     - APP_KEY=xxxx
     - DB_CONNECTION=sqlite
+    - CODECLIMATE_REPO_TOKEN=89ac3c612f0b87ed76ebac6e5f9fd25aae74b440a5ba371880211e67c5d153d8
     - CACHE_DRIVER=file
     - SESSION_DRIVER=file
     - QUEUE_DRIVER=sync
 
 script:
-  - phpunit --coverage-text
-  - codeclimate-test-reporter --file .coverage
+  - phpunit --coverage-clover build/logs/clover.xml
+  - test-reporter
