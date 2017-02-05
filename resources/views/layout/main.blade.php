@@ -16,10 +16,12 @@
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,300,700">
     <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    @yield('css-plugins')
 
     <!-- App CSS -->
     <link rel="stylesheet" href="{{ asset('css/target-admin.css') }}">
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+    @yield('css-custom')
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -41,7 +43,7 @@
             </button>
 
             <a class="navbar-brand navbar-brand-image" href="./index.html">
-                <img src="./img/logo.png" alt="Site Logo">
+                <img src="{{ asset('img/logo.png') }}" alt="Site Logo">
             </a>
 
         </div>
@@ -217,8 +219,10 @@
 
 <script src="{{ asset('js/jquery-1.10.1.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+@yield('js-plugins')
 <!-- App JS -->
 <script src="{{ asset('js/target-admin.js') }}"></script>
+@yield('js-custom')
 
 </body>
 

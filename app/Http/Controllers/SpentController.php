@@ -3,8 +3,13 @@
 namespace FinancesAdmin\Http\Controllers;
 
 
+use Carbon\Carbon;
 use FinancesAdmin\Repositories\SpentRepository;
+use FinancesAdmin\Util\DateUtil;
+use FinancesAdmin\Util\Money;
+use FinancesAdmin\Util\MoneyUtil;
 use Illuminate\Http\Request;
+use NumberFormatter;
 
 class SpentController extends Controller
 {
@@ -22,7 +27,8 @@ class SpentController extends Controller
      */
     public function index()
     {
-        return view("spent.index");
+        $spents = $this->repository->all();
+        return view("spent.index", compact('spents'));
     }
 
     /**
@@ -43,7 +49,19 @@ class SpentController extends Controller
      */
     public function store(Request $request)
     {
-        $this->repository->create($request->all());
+        $dueDate = DateUtil::fromStore($request->input('dueDate'));
+        $paymentDate = '';
+        if($request->input('paymentDate')){
+            $paymentDate = DateUtil::fromStore($request->input('paymentDate'));
+        }
+        $money = MoneyUtil::fromStore($request->input('value'));
+
+        $this->repository->create([
+            'description' => $request->input('description'),
+            'value' => $money->getValue(),
+            'dueDate' => $dueDate->getDate(),
+            'paymentDate' => $paymentDate->getDate()
+        ]);
         return redirect()->route('spent.index');
     }
 
@@ -68,7 +86,19 @@ class SpentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->repository->update($request->all(), $id);
+        $dueDate = DateUtil::fromStore($request->input('dueDate'));
+        $paymentDate = '';
+        if($request->input('paymentDate')){
+            $paymentDate = DateUtil::fromStore($request->input('paymentDate'));
+        }
+        $money = MoneyUtil::fromStore($request->input('value'));
+
+        $this->repository->update([
+            'description' => $request->input('description'),
+            'value' => $money->getValue(),
+            'dueDate' => $dueDate->getDate(),
+            'paymentDate' => $paymentDate->getDate()
+        ], $id);
         return redirect()->route('spent.index');
     }
 
