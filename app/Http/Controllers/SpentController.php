@@ -2,10 +2,19 @@
 
 namespace FinancesAdmin\Http\Controllers;
 
+
+use FinancesAdmin\Repositories\SpentRepository;
 use Illuminate\Http\Request;
 
 class SpentController extends Controller
 {
+    protected $repository;
+
+    public function __construct(SpentRepository $spentRepository)
+    {
+        $this->repository = $spentRepository;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -23,7 +32,7 @@ class SpentController extends Controller
      */
     public function create()
     {
-        //
+        return view('spent.create');
     }
 
     /**
@@ -34,18 +43,8 @@ class SpentController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        $this->repository->create($request->all());
+        return redirect()->route('spent.index');
     }
 
     /**
@@ -56,7 +55,8 @@ class SpentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $spent = $this->repository->find($id);
+        return view('spent.edit', compact('spent'));
     }
 
     /**
@@ -68,7 +68,8 @@ class SpentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->repository->update($request->all(), $id);
+        return redirect()->route('spent.index');
     }
 
     /**
@@ -79,6 +80,7 @@ class SpentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->repository->delete($id);
+        return redirect()->route('spent.index');
     }
 }
