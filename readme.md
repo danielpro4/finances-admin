@@ -4,6 +4,7 @@
 <a href="https://travis-ci.org/walteribeiro/finances-admin"><img src="https://travis-ci.org/walteribeiro/finances-admin.svg?branch=master"></a>
 <a href="https://codeclimate.com/github/walteribeiro/finances-admin"><img src="https://codeclimate.com/github/walteribeiro/finances-admin/badges/gpa.svg" /></a>
 <a href="https://codeclimate.com/github/walteribeiro/finances-admin/coverage"><img src="https://codeclimate.com/github/walteribeiro/finances-admin/badges/coverage.svg" /></a>
+<a href="https://codeclimate.com/github/walteribeiro/finances-admin"><img src="https://codeclimate.com/github/walteribeiro/finances-admin/badges/issue_count.svg" /></a>
 </p>
 
 ## About Laravel
