@@ -5,7 +5,7 @@
     <div class="col-sm-12">
 
         <div class="clearfix">
-            <a href="{{ route('spent.create') }}" class="btn btn-secondary pull-right">Novo <i class="fa fa-plus"></i></a>
+            <a href="{{ route('spent.create') }}" class="btn btn-secondary pull-right">Novo</a>
         </div>
 
         <h4 class="heading">
@@ -34,14 +34,17 @@
                             <td>{{ $s->dueDate->format('d/m/Y') }}</td>
                             <td>{{ $s->paymentDate->format('d/m/Y') }}</td>
                             <td class="text-center">
-                                <a href="{{ route('spent.edit', $s->id) }}" class="btn btn-xs btn-tertiary"><i class="fa fa-pencil"></i></a>
+                                <a href="{{ route('spent.edit', $s->id) }}" class="btn btn-xs btn-tertiary"><i
+                                            class="fa fa-pencil"></i></a>
                                 &nbsp;
-                                <button class="btn btn-xs btn-primary"><i class="fa fa-trash-o"></i></button>
+                                <a data-id="{{$s->id}}" href="#modal" class="btn btn-xs btn-primary"><i
+                                            class="fa fa-trash-o"></i></a>
                             </td>
                         </tr>
                     @endforeach
                     </tbody>
                 </table>
+                {{$spents->links()}}
             </div>
         @else
             <ul class="icons-list notifications-list">
@@ -54,3 +57,27 @@
     </div>
 
 @endsection
+
+@section('custom')
+    @include('layout.delete-modal')
+@endsection
+
+@section('js-custom')
+
+    <script>
+        $(function () {
+            var deleteModal = $('div#deleteModal');
+
+            $("a[href='#modal']").click(function (event) {
+                event.preventDefault();
+                var id = $(this).data('id');
+
+                deleteModal.find('.modal-body p').html('Tem certeza que deseja remover o gasto selecionado?');
+
+                $('#formexcluir').attr("action", "spents/destroy/" + id);
+                deleteModal.modal('show');
+            });
+        });
+    </script>
+@endsection
+

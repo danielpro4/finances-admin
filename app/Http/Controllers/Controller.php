@@ -10,4 +10,14 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    const PADRAO = 'padrao';
+    const SUCESSO = 'sucesso';
+    const ERRO = 'erro';
+    const INFO = 'info';
+    const ALERTA = 'alerta';
+
+    const INCLUSAO = 'Registro incluído com sucesso!';
+    const ALTERACAO = 'Registro alterado com sucesso!';
+    const EXCLUSAO = 'Registro excluído com sucesso!';
 }

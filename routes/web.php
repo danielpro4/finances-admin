@@ -15,6 +15,12 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
+Route::group(['prefix' => 'dashboard'], function() {
+
+    Route::get('/', ['as' => 'dashboard.index', 'uses' => 'DashboardController@index']);
+
+});
+
 Route::group(['prefix' => 'spents'], function(){
 
     Route::get('/',                ['as'=>'spent.index',    'uses'=> 'SpentController@index']);

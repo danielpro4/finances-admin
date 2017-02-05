@@ -3,13 +3,11 @@
 namespace FinancesAdmin\Http\Controllers;
 
 
-use Carbon\Carbon;
 use FinancesAdmin\Repositories\SpentRepository;
 use FinancesAdmin\Util\DateUtil;
-use FinancesAdmin\Util\Money;
 use FinancesAdmin\Util\MoneyUtil;
 use Illuminate\Http\Request;
-use NumberFormatter;
+use Illuminate\Support\Facades\Session;
 
 class SpentController extends Controller
 {
@@ -27,7 +25,7 @@ class SpentController extends Controller
      */
     public function index()
     {
-        $spents = $this->repository->all();
+        $spents = $this->repository->paginate(5);
         return view("spent.index", compact('spents'));
     }
 
@@ -62,6 +60,7 @@ class SpentController extends Controller
             'dueDate' => $dueDate->getDate(),
             'paymentDate' => $paymentDate->getDate()
         ]);
+        Session::flash(parent::SUCESSO, parent::INCLUSAO);
         return redirect()->route('spent.index');
     }
 
@@ -99,6 +98,7 @@ class SpentController extends Controller
             'dueDate' => $dueDate->getDate(),
             'paymentDate' => $paymentDate->getDate()
         ], $id);
+        Session::flash(parent::SUCESSO, parent::ALTERACAO);
         return redirect()->route('spent.index');
     }
 
@@ -111,6 +111,7 @@ class SpentController extends Controller
     public function destroy($id)
     {
         $this->repository->delete($id);
+        Session::flash(parent::SUCESSO, parent::EXCLUSAO);
         return redirect()->route('spent.index');
     }
 }

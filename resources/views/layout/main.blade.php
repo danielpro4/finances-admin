@@ -103,13 +103,13 @@
 
             <ul class="nav navbar-nav mainbar-nav">
 
-                <li class="active">
-                    <a href="./index.html">
+                <li class="{{ Request::segment(1) === 'dashboard' ? 'active' : null }}">
+                    <a href="{{route('dashboard.index')}}">
                         <i class="fa fa-dashboard"></i> Dashboard
                     </a>
                 </li>
 
-                <li>
+                <li class="{{ Request::segment(1) === 'spents' ? 'active' : null }}">
                     <a href="{{route('spent.index')}}">
                         <i class="fa fa-money"></i> Gastos
                     </a>
@@ -138,53 +138,6 @@
     <div class="content">
 
         <div class="content-container">
-
-            <div class="row">
-
-                <div class="col-sm-6 col-md-3">
-                    <div class="row-stat">
-                        <p class="row-stat-label">Revenue Today</p>
-                        <h3 class="row-stat-value">$890.00</h3>
-                        <span class="label label-success row-stat-badge">+43%</span>
-                    </div>
-                    <!-- /.row-stat -->
-                </div>
-                <!-- /.col -->
-
-                <div class="col-sm-6 col-md-3">
-                    <div class="row-stat">
-                        <p class="row-stat-label">Revenue This Month</p>
-                       <h3 class="row-stat-value">$8290.00</h3>
-                        <span class="label label-success row-stat-badge">+17%</span>
-                    </div>
-                    <!-- /.row-stat -->
-                </div>
-                <!-- /.col -->
-
-                <div class="col-sm-6 col-md-3">
-                    <div class="row-stat">
-                        <p class="row-stat-label">Total Users</p>
-                        <h3 class="row-stat-value">98,290</h3>
-                        <span class="label label-success row-stat-badge">+26%</span>
-                    </div>
-                    <!-- /.row-stat -->
-                </div>
-                <!-- /.col -->
-
-                <div class="col-sm-6 col-md-3">
-                    <div class="row-stat">
-                        <p class="row-stat-label">Currently Active Uses</p>
-                        <h3 class="row-stat-value">19</h3>
-                        <span class="label label-danger row-stat-badge">+5%</span>
-                    </div>
-                    <!-- /.row-stat -->
-                </div>
-                <!-- /.col -->
-
-            </div>
-            <!-- /.row -->
-
-            <br>
 
             <div class="row">
 
@@ -217,12 +170,18 @@
 
 </footer>
 
+@yield('custom')
+
 <script src="{{ asset('js/jquery-1.10.1.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('js/howl.js') }}"></script>
 @yield('js-plugins')
 <!-- App JS -->
 <script src="{{ asset('js/target-admin.js') }}"></script>
+<script src="{{ asset('js/custom.js') }}"></script>
 @yield('js-custom')
+
+@include('layout.return-request')
 
 </body>
 
