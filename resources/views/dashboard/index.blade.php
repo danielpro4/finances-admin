@@ -42,12 +42,4 @@
     </div>
     <!-- /.col -->
 
-    <div class="row">
-        <button class="btn btn-default howler" data-type="" data-icon="fa fa-table">Default</button>
-        <button class="btn btn-success howler" data-type="success" data-icon="fa fa-check-square-o">Success</button>
-        <button class="btn btn-warning howler" data-type="warning" data-icon="fa fa-exclamation">Warning</button>
-        <button class="btn btn-danger howler" data-type="danger" data-icon="fa fa-ban">Danger</button>
-        <button class="btn btn-info howler" data-type="info" data-icon="fa fa-info">Info</button>
-    </div>
-
 @endsection

@@ -10,10 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('auth.login');
-});
+$this->get('/',       ['as'=>'login',         'uses'=>'Auth\LoginController@showLoginForm']);
+$this->post('login',  ['as'=>'login.attempt', 'uses'=>'Auth\LoginController@login']);
+$this->post('logout', ['as'=>'logout',        'uses'=>'Auth\LoginController@logout']);
 
 Route::group(['prefix' => 'dashboard'], function() {
 

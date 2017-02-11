@@ -4,6 +4,7 @@ namespace FinancesAdmin\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class RedirectIfAuthenticated
 {
@@ -18,7 +19,8 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
-            return redirect('/home');
+            Session::flash('padrao', "Seja bem vindo!");
+            return redirect()->route('dashboard.index');
         }
 
         return $next($request);
