@@ -1,4 +1,5 @@
 <?php
+
 namespace FinancesAdmin\Repositories;
 
 use FinancesAdmin\Models\Spent;
@@ -17,5 +18,4 @@ class SpentRepository extends BasicRepository
     {
         return Spent::class;
     }
-
 }

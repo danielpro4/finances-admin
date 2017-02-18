@@ -32,5 +32,4 @@ class DateUtil
     {
         return $this->date;
     }
-
 }

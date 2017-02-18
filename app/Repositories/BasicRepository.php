@@ -58,7 +58,7 @@ abstract class BasicRepository implements RepositoryInterface
      *
      * @return mixed
      */
-    public function all($columns = array('*'))
+    public function all($columns = ['*'])
     {
         return $this->model->get($columns);
     }
@@ -71,7 +71,7 @@ abstract class BasicRepository implements RepositoryInterface
      *
      * @return mixed
      */
-    public function paginate($perPage = 15, $columns = array('*'))
+    public function paginate($perPage = 15, $columns = ['*'])
     {
         return $this->model->paginate($perPage, $columns);
     }
@@ -122,7 +122,7 @@ abstract class BasicRepository implements RepositoryInterface
      *
      * @return mixed
      */
-    public function find($id, $columns = array('*'))
+    public function find($id, $columns = ['*'])
     {
         return $this->model->find($id, $columns);
     }
@@ -133,11 +133,11 @@ abstract class BasicRepository implements RepositoryInterface
      * @param       $attribute
      * @param       $value
      * @param array $columns
+     *
      * @return mixed
      */
-    public function findBy($attribute, $value, $columns = array('*'))
+    public function findBy($attribute, $value, $columns = ['*'])
     {
         return $this->model->where($attribute, '=', $value)->first($columns);
     }
-
 }

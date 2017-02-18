@@ -10,14 +10,13 @@ class Spent extends Model
     protected $table = 'spents';
 
     protected $fillable = [
-        'description', 'value', 'dueDate', 'paymentDate'
+        'description', 'value', 'dueDate', 'paymentDate',
     ];
 
     protected $dates = ['dueDate', 'paymentDate'];
 
-    function getValueAttribute()
+    public function getValueAttribute()
     {
         return MoneyUtil::fromView($this->attributes['value'])->valueFmt();
     }
-
 }

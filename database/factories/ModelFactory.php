@@ -24,11 +24,10 @@ $factory->define(FinancesAdmin\User::class, function (Faker\Generator $faker) {
 });
 
 $factory->define(FinancesAdmin\Models\Spent::class, function (Faker\Generator $faker) {
-
     return [
         "description" => $faker->paragraph(2),
         "value"       => $faker->randomNumber(2),
         "dueDate"     => $faker->date(),
-        "paymentDate" => $faker->date()
+        "paymentDate" => $faker->date(),
     ];
 });

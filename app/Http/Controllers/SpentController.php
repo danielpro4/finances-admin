@@ -2,7 +2,6 @@
 
 namespace FinancesAdmin\Http\Controllers;
 
-
 use FinancesAdmin\Repositories\SpentRepository;
 use FinancesAdmin\Util\DateUtil;
 use FinancesAdmin\Util\MoneyUtil;
@@ -27,7 +26,7 @@ class SpentController extends Controller
     {
         $spents = $this->repository->paginate(5);
 
-        return view("spent.index", compact('spents'));
+        return view('spent.index', compact('spents'));
     }
 
     /**
@@ -60,9 +59,10 @@ class SpentController extends Controller
             'description' => $request->input('description'),
             'value'       => $money->getValue(),
             'dueDate'     => $dueDate->getDate(),
-            'paymentDate' => $paymentDate->getDate()
+            'paymentDate' => $paymentDate->getDate(),
         ]);
         Session::flash(parent::SUCESSO, parent::INCLUSAO);
+
         return redirect()->route('spent.index');
     }
 
@@ -76,6 +76,7 @@ class SpentController extends Controller
     public function edit($id)
     {
         $spent = $this->repository->find($id);
+
         return view('spent.edit', compact('spent'));
     }
 
@@ -100,9 +101,10 @@ class SpentController extends Controller
             'description' => $request->input('description'),
             'value'       => $money->getValue(),
             'dueDate'     => $dueDate->getDate(),
-            'paymentDate' => $paymentDate->getDate()
+            'paymentDate' => $paymentDate->getDate(),
         ], $id);
         Session::flash(parent::SUCESSO, parent::ALTERACAO);
+
         return redirect()->route('spent.index');
     }
 

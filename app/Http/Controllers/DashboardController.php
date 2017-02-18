@@ -2,7 +2,6 @@
 
 namespace FinancesAdmin\Http\Controllers;
 
-
 class DashboardController extends Controller
 {
     public function __construct()

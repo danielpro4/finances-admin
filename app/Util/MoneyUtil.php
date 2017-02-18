@@ -4,7 +4,6 @@ namespace FinancesAdmin\Util;
 
 class MoneyUtil
 {
-
     private $value;
 
     private function __construct($value)
@@ -16,6 +15,7 @@ class MoneyUtil
     {
         $value = preg_replace("/\./", '', $value);
         $value = preg_replace('/,/', '.', $value);
+
         return new static($value);
     }
 
@@ -33,5 +33,4 @@ class MoneyUtil
     {
         return $this->value;
     }
-
 }
