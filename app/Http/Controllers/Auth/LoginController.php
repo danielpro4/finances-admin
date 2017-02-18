@@ -2,9 +2,9 @@
 
 namespace FinancesAdmin\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
 use FinancesAdmin\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {

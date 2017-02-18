@@ -2,10 +2,10 @@
 
 namespace FinancesAdmin\Http\Controllers\Auth;
 
-use FinancesAdmin\Http\Controllers\Controller;
 use FinancesAdmin\User;
-use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Validator;
+use FinancesAdmin\Http\Controllers\Controller;
+use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {

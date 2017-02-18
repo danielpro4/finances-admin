@@ -25,6 +25,4 @@ Route::group(['prefix' => 'spents'], function () {
     Route::get('/edit/{id}', ['as' => 'spent.edit', 'uses' => 'SpentController@edit']);
     Route::put('/update/{id}', ['as' => 'spent.update', 'uses' => 'SpentController@update']);
     Route::delete('/destroy/{id}', ['as' => 'spent.destroy', 'uses' => 'SpentController@destroy']);
-
-
 });

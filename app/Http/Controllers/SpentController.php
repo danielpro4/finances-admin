@@ -2,11 +2,11 @@
 
 namespace FinancesAdmin\Http\Controllers;
 
-use FinancesAdmin\Repositories\SpentRepository;
+use Illuminate\Http\Request;
 use FinancesAdmin\Util\DateUtil;
 use FinancesAdmin\Util\MoneyUtil;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use FinancesAdmin\Repositories\SpentRepository;
 
 class SpentController extends Controller
 {

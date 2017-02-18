@@ -3,9 +3,9 @@
 namespace FinancesAdmin\Repositories;
 
 use Exception;
-use FinancesAdmin\Repositories\Contracts\RepositoryInterface;
-use Illuminate\Container\Container as App;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Container\Container as App;
+use FinancesAdmin\Repositories\Contracts\RepositoryInterface;
 
 /**
  * Class BasicRepository.
@@ -44,7 +44,7 @@ abstract class BasicRepository implements RepositoryInterface
     {
         $model = $this->app->make($this->model());
 
-        if (!$model instanceof Model) {
+        if (! $model instanceof Model) {
             throw new Exception("Class {$this->model()} must be an instance of Illuminate\\Database\\Eloquent\\Model");
         }
 
@@ -97,7 +97,7 @@ abstract class BasicRepository implements RepositoryInterface
      *
      * @return mixed
      */
-    public function update(array $data, $id, $attribute= 'id')
+    public function update(array $data, $id, $attribute = 'id')
     {
         return $this->model->where($attribute, '=', $id)->update($data);
     }
@@ -140,4 +140,5 @@ abstract class BasicRepository implements RepositoryInterface
     {
         return $this->model->where($attribute, '=', $value)->first($columns);
     }
+
 }

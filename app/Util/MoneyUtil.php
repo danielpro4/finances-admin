@@ -33,4 +33,5 @@ class MoneyUtil
     {
         return $this->value;
     }
+
 }

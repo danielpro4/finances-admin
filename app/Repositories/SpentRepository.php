@@ -18,4 +18,5 @@ class SpentRepository extends BasicRepository
     {
         return Spent::class;
     }
+
 }

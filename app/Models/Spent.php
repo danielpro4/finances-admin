@@ -19,4 +19,5 @@ class Spent extends Model
     {
         return MoneyUtil::fromView($this->attributes['value'])->valueFmt();
     }
+
 }
