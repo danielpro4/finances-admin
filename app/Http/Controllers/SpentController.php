@@ -26,6 +26,7 @@ class SpentController extends Controller
     public function index()
     {
         $spents = $this->repository->paginate(5);
+
         return view("spent.index", compact('spents'));
     }
 
@@ -42,22 +43,23 @@ class SpentController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $dueDate = DateUtil::fromStore($request->input('dueDate'));
         $paymentDate = '';
-        if($request->input('paymentDate')){
+        if ($request->input('paymentDate')) {
             $paymentDate = DateUtil::fromStore($request->input('paymentDate'));
         }
         $money = MoneyUtil::fromStore($request->input('value'));
 
         $this->repository->create([
             'description' => $request->input('description'),
-            'value' => $money->getValue(),
-            'dueDate' => $dueDate->getDate(),
+            'value'       => $money->getValue(),
+            'dueDate'     => $dueDate->getDate(),
             'paymentDate' => $paymentDate->getDate()
         ]);
         Session::flash(parent::SUCESSO, parent::INCLUSAO);
@@ -67,7 +69,8 @@ class SpentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -79,23 +82,24 @@ class SpentController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         $dueDate = DateUtil::fromStore($request->input('dueDate'));
         $paymentDate = '';
-        if($request->input('paymentDate')){
+        if ($request->input('paymentDate')) {
             $paymentDate = DateUtil::fromStore($request->input('paymentDate'));
         }
         $money = MoneyUtil::fromStore($request->input('value'));
 
         $this->repository->update([
             'description' => $request->input('description'),
-            'value' => $money->getValue(),
-            'dueDate' => $dueDate->getDate(),
+            'value'       => $money->getValue(),
+            'dueDate'     => $dueDate->getDate(),
             'paymentDate' => $paymentDate->getDate()
         ], $id);
         Session::flash(parent::SUCESSO, parent::ALTERACAO);
@@ -105,7 +109,8 @@ class SpentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

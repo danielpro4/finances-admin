@@ -2,7 +2,6 @@
 
 namespace FinancesAdmin\Util;
 
-
 use Carbon\Carbon;
 
 class DateUtil
@@ -20,6 +19,7 @@ class DateUtil
     public static function fromStore($date, $format = 'd/m/Y')
     {
         $date = Carbon::createFromFormat($format, $date);
+
         return new static($date);
     }
 
@@ -32,4 +32,5 @@ class DateUtil
     {
         return $this->date;
     }
+
 }

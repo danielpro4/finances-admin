@@ -16,9 +16,9 @@ $factory->define(FinancesAdmin\User::class, function (Faker\Generator $faker) {
     static $password;
 
     return [
-        'name' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
-        'password' => $password ?: $password = bcrypt('secret'),
+        'name'           => $faker->name,
+        'email'          => $faker->unique()->safeEmail,
+        'password'       => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
     ];
 });
@@ -27,8 +27,8 @@ $factory->define(FinancesAdmin\Models\Spent::class, function (Faker\Generator $f
 
     return [
         "description" => $faker->paragraph(2),
-        "value" => $faker->randomNumber(2),
-        "dueDate" => $faker->date(),
+        "value"       => $faker->randomNumber(2),
+        "dueDate"     => $faker->date(),
         "paymentDate" => $faker->date()
     ];
 });

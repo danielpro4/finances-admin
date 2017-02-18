@@ -4,8 +4,7 @@ namespace FinancesAdmin\Repositories;
 use FinancesAdmin\Models\Spent;
 
 /**
- * Class PermissionRepository
- * @package App\Repositories
+ * Class PermissionRepository.
  */
 class SpentRepository extends BasicRepository
 {
@@ -14,8 +13,9 @@ class SpentRepository extends BasicRepository
      *
      * @return mixed
      */
-    function model()
+    public function model()
     {
         return Spent::class;
     }
+
 }

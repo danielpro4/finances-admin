@@ -2,7 +2,8 @@
 
 namespace FinancesAdmin\Util;
 
-class MoneyUtil {
+class MoneyUtil
+{
 
     private $value;
 
@@ -13,8 +14,8 @@ class MoneyUtil {
 
     public static function fromStore($value)
     {
-        $value = preg_replace("/\./", "", $value);
-        $value = preg_replace("/,/", ".", $value);
+        $value = preg_replace("/\./", '', $value);
+        $value = preg_replace('/,/', '.', $value);
         return new static($value);
     }
 
@@ -25,11 +26,12 @@ class MoneyUtil {
 
     public function valueFmt()
     {
-        return 'R$ ' . number_format($this->value, 2, ',', '.' );
+        return 'R$ '.number_format($this->value, 2, ',', '.');
     }
 
     public function getValue()
     {
         return $this->value;
     }
+
 }
