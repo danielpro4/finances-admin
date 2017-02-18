@@ -119,6 +119,7 @@ class SpentController extends Controller
     {
         $this->repository->delete($id);
         Session::flash(parent::SUCESSO, parent::EXCLUSAO);
+
         return redirect()->route('spent.index');
     }
 }
