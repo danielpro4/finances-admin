@@ -2,6 +2,7 @@
 
 <p align="center">
 <a href="https://travis-ci.org/walteribeiro/finances-admin"><img src="https://travis-ci.org/walteribeiro/finances-admin.svg?branch=master"></a>
+<a href="https://styleci.io/repos/80957547"><img src="https://styleci.io/repos/80957547/shield?branch=master" alt="StyleCI"></a>
 <a href="https://codeclimate.com/github/walteribeiro/finances-admin"><img src="https://codeclimate.com/github/walteribeiro/finances-admin/badges/gpa.svg" /></a>
 <a href="https://codeclimate.com/github/walteribeiro/finances-admin/coverage"><img src="https://codeclimate.com/github/walteribeiro/finances-admin/badges/coverage.svg" /></a>
 <a href="https://codeclimate.com/github/walteribeiro/finances-admin"><img src="https://codeclimate.com/github/walteribeiro/finances-admin/badges/issue_count.svg" /></a>
